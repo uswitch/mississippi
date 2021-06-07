@@ -79,7 +79,9 @@
   (let [when-fn (or when-fn (constantly true))]
     (when (and (when-fn subject)
                (not (validate-fn value)))
-      msg)))
+      (if (fn? msg)
+        (msg value)
+        msg))))
 
 (defn errors-for
   [subject attr validations]

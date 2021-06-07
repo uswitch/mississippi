@@ -30,6 +30,11 @@
     (is (= {:a ["required" "not a number"]}
            (errors {:a nil} {:a [(required) (numeric)]})))))
 
+(testing "msg as fn"
+  (deftest msg-fn-works
+    (is (= {:a ["The value 'my value' is a mistake"]}
+           (errors {:a "my value"} {:a [[(constantly false) :msg (fn [v] (format "The value '%s' is a mistake" v))]]})))))
+
 (testing "required validation builder"
   (let [[validation-fn & {msg :msg when-fn :when}] (required)]
     (deftest required-validation
@@ -61,7 +66,8 @@
       (is (true?  (validation-fn :a))))
 
     (deftest member-of-defaults
-      (is (= msg "not a member of :a or :b"))
+      (is (or (= msg "not a member of :a or :b") ;; order not defined for set
+              (= msg "not a member of :b or :a")))
       (is (nil? when-fn)))))
 
 (testing "subset-of validation builder"
@@ -73,7 +79,8 @@
       (is (true?  (validation-fn [:a]))))
 
     (deftest subset-of-defaults
-      (is (= msg "not a subset of :a or :b"))
+      (is (or (= msg "not a subset of :b or :a") ;; order not defined for set
+              (= msg "not a subset of :a or :b")))
       (is (nil? when-fn)))))
 
 (testing "matches validation builder"
