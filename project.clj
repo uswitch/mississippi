@@ -2,7 +2,7 @@
 
 (def build-version (str base-version (if-let [number (System/getenv "DRONE_BUILD_NUMBER")]  (str "." number) "-SNAPSHOT")))
 
-(defproject mississippi build-version
+(defproject uswitch/mississippi build-version
   :description "validations for clojure maps"
   :url "https://github.com/uswitch/mississippi"
   :license {:name "Eclipse"}

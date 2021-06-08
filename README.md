@@ -132,3 +132,11 @@ Copyright (C) 2010 Michael Jones, Gareth Jones
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
+## Deployment
+
+## Produce snaphot releases for testing:
+
+`lein deploy s3-snapshots`
+
+
+
