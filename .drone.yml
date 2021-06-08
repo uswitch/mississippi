@@ -1,0 +1,33 @@
+pipeline:
+  build-uberjar:
+    when:
+      event: push
+    image: clojure:openjdk-15-lein-2.9.5
+    secrets: [ "aws_access_key_id", "aws_secret_access_key"]
+    commands:
+      - lein deps
+      - lein test
+      - lein jar
+
+  release:
+    image: clojure:openjdk-15-lein-2.9.5
+    when:
+      branch: master
+      event: push
+    secrets: [ "aws_access_key_id", "aws_secret_access_key"]
+    commands:
+      - lein deps
+      - lein jar
+      - lein deploy s3-releases
+
+  # notify-slack:
+  #   when:
+  #     branch: master
+  #     event: push
+  #   image: plugins/slack
+  #   webhook: https://hooks.slack.com/services/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
+  #   channel: clojure
+  #   username: drone
+  #   template: >
+  #     {{ repo.name }}:{{ build.branch }} finished build {{ build.number }}
+  #     with a status of {{ build.status }}. See it at https://ci.usw.co/{{ repo.name }}/{{ build.number }}
