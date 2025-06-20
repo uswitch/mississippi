@@ -123,7 +123,8 @@ Mississippi is hosted on [Clojars](http://www.clojars.org).
 Add the following to `:dependencies` in your `project.clj`
 
 ```clojure
-[mississippi "1.0.1"]
+[mississippi "1.0.2"]
+Use latest build from github actions
 ```
 
 ## License
@@ -140,3 +141,4 @@ Distributed under the Eclipse Public License, the same as Clojure.
 
 
 
+ 
