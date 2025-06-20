@@ -41,7 +41,7 @@ jobs:
       - run: timeout --preserve-status 5m lein test
   uberjar:
     needs: deps
-    uses: uswitch/reusable-actions/.github/workflows/reusable-clojure-lint.yaml@v2
+    uses: uswitch/reusable-actions/.github/workflows/reusable-clojure-uberjar.yaml@v2
     with:
       jar_file: ./target/
       lein_version: 2.9.1
