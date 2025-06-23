@@ -123,7 +123,7 @@ Mississippi is hosted on [Clojars](http://www.clojars.org).
 Add the following to `:dependencies` in your `project.clj`
 
 ```clojure
-[mississippi "1.0.2"]
+[net.clojars.uswitch-service/mississippi "1.0.4"]
 Use latest build from github actions
 ```
 
@@ -134,6 +134,11 @@ Copyright (C) 2010 Michael Jones, Gareth Jones
 Distributed under the Eclipse Public License, the same as Clojure.
 
 ## Deployment
+
+`lein deploy clojars` uses the uswitch-service account, the credentials are stored in keeper.
+
+You'll have to log in to clojars as `uswitch-service` and generate a deployment token.
+
 
 ## Produce snaphot releases for testing:
 

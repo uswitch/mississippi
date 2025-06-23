@@ -1,8 +1,8 @@
 (def base-version "1.0")
 
-(def build-version "1.0.3")
+(def build-version "1.0.4")
 
-(defproject uswitch/mississippi build-version
+(defproject net.clojars.uswitch-service/mississippi build-version
   :description "validations for clojure maps"
   :url "https://github.com/uswitch/mississippi"
   :license {:name "Eclipse"}
