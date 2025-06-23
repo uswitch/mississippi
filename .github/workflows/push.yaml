@@ -4,6 +4,7 @@ permissions:
   contents: read
   id-token: write
 
+
 env:
   BUILD_NUMBER: ${{ github.run_number }}  # used in project file. Version number is 1.0.BUILD_NUMBER
 
