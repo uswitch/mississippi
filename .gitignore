@@ -1,3 +1,6 @@
+.github
+.lsp
+.clj-kondo
 pom.xml
 *jar
 lib
