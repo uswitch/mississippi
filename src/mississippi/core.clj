@@ -54,8 +54,17 @@
      :msg (or msg (str "does not match pattern of '" re "'"))
      :when when-fn]))
 
+(defn wrap-nillable
+  "Wrap around vector with validation function if desired"
+  [[validation-fn & opts]]
+  (vec (concat
+        [(fn [v]
+           (or (nil? v)
+               (validation-fn v)))]
+        opts)))
+
 (def email-regex
-  #"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$")
+     #"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$")
 
 (defn matches-email
   "Validates the String value v matches a basic email pattern."

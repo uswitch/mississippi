@@ -124,3 +124,14 @@
     (deftest numeric-defaults
       (is (= msg "not a number"))
       (is (nil? when-fn)))))
+
+(deftest numeric-validation-nillable
+  (testing "wrap-nillable"
+    (let [[validation-fn & {msg :msg when-fn :when}] (wrap-nillable (numeric))]
+      (is (true? (validation-fn nil)))
+      (is (false? (validation-fn "")))
+      (is (false? (validation-fn "")))
+      (is (false? (validation-fn :a)))
+      (is (true?  (validation-fn 1)))
+      (is (= msg "not a number"))
+      (is (nil? when-fn)))))

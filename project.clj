@@ -1,6 +1,6 @@
 (def base-version "1.0")
 
-(def build-version (str base-version (if-let [number (System/getenv "DRONE_BUILD_NUMBER")]  (str "." number) "-SNAPSHOT")))
+(def build-version "1.0.3")
 
 (defproject uswitch/mississippi build-version
   :description "validations for clojure maps"
@@ -11,12 +11,12 @@
   :repositories {"s3-releases"
                  {:url           "s3p://uswitch-internal-jars/releases"
                   :sign-releases false
-                  :no-auth true
-                  }
+                  :no-auth true}
                  "s3-snapshots"
                  {:url  "s3p://uswitch-internal-jars/snapshots"
                   :sign-releases false
-                  :no-auth true
-                  }
-                 }
+                  :no-auth true}
+                 "clojars"
+                 {:sign-releases false
+                  :no-auth false}}
   :lein-release {:deploy-via "s3-releases"})
