@@ -8,15 +8,11 @@
   :license {:name "Eclipse"}
   :dependencies [[org.clojure/clojure "1.10.0"]]
   :plugins [[s3-wagon-private "1.3.4"]]
-  :repositories {"s3-releases"
-                 {:url           "s3p://uswitch-internal-jars/releases"
-                  :sign-releases false
-                  :no-auth true}
-                 "s3-snapshots"
-                 {:url  "s3p://uswitch-internal-jars/snapshots"
-                  :sign-releases false
-                  :no-auth true}
-                 "clojars"
+  :repositories {"clojars"
                  {:sign-releases false
-                  :no-auth false}}
-  :lein-release {:deploy-via "s3-releases"})
+                  :no-auth false}
+                 "github"    {:url           "https://maven.pkg.github.com/uswitch/mississippi"
+                              :username      :env/GITHUB_ACTOR
+                              :password      :env/GITHUB_TOKEN
+                              :sign-releases false}}
+  :lein-release {:deploy-via "github"})
