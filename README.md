@@ -135,10 +135,7 @@ Distributed under the Eclipse Public License, the same as Clojure.
 
 ## Deployment
 
-`lein deploy clojars` uses the uswitch-service account, the credentials are stored in keeper.
-
-You'll have to log in to clojars as `uswitch-service` and generate a deployment token.
-
+We deploy via github packages only.
 
 ## Produce snaphot releases for testing:
 
